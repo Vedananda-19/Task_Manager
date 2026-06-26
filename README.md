@@ -16,7 +16,7 @@ A full-stack AI-powered task management application that helps users organize ta
 - Responsive and modern user interface
 - Dark and light mode support
 - Optimistic UI updates for smooth interactions
-- Persistent PostgreSQL database storage
+- Persistent MongoDB database storage
 
 ---
 
@@ -29,19 +29,18 @@ A full-stack AI-powered task management application that helps users organize ta
 - TanStack Query
 - React Router
 
+<sub>_Note: some of the JSX and Styling was assisted by AI._</sub>
+
 ---
 
 ## Backend
 
 - FastAPI
-- LangGraph
-- LangChain
+- LangGraph & LangChain
 - Google Gemini
 - MongoDB
 - PyMongo
-- JWT Authentication
 - PostgreSQL (LangGraph Checkpointer)
-- Pydantic
 - Server-Sent Events (Streaming Responses)
 - AsyncIO
 
@@ -78,132 +77,130 @@ A full-stack AI-powered task management application that helps users organize ta
 
 # Live Demo
 
-Frontend: [Task Manager](YOUR_FRONTEND_URL)
+Frontend: [Task Manager](https://taskmanager.quantumnex.in/)
 
-Backend API: [Backend Docs](YOUR_BACKEND_DOCS)
-
----
-
-# Project Structure
-
-```text
-Task_Manager
-│
-├── backend
-│   ├── agent
-│   ├── routes
-│   ├── services
-│   ├── database
-│   ├── models
-│   ├── schemas
-│   ├── main.py
-│   ├── requirements.txt
-│   └── ...
-│
-└── frontend
-    ├── public
-    └── src
-        ├── api
-        ├── components
-        ├── context
-        ├── hooks
-        ├── layouts
-        ├── pages
-        ├── routes
-        ├── utils
-        ├── App.tsx
-        └── main.tsx
-```
+Backend API: [Backend Docs](https://task-manager-91f7.onrender.com/docs)
 
 ---
 
 # Screenshots
 
-## Dashboard
+## Tasks Dashboard
 
-View, organize, and manage tasks with pagination, filtering, and sorting.
+**View, organize, and manage tasks with pagination, filtering, and sorting.**
 
-![Dashboard](Screenshots/Dashboard.png)
-
----
-
-## AI Assistant
-
-Interact with the AI assistant through a real-time streaming chat interface capable of understanding tasks and answering questions.
-
-![AI Assistant](Screenshots/AI-Assistant.png)
+<table>
+<tr>
+<td><img src="screenshots/Dashboard.png" alt="Tasks dashboard" width="100%" /></td>
+<td><img src="screenshots/Creating.png" alt="Creating tasks" width="100%" /></td>
+</tr>
+</table>
 
 ---
 
-## Task Creation
+## AI Assistant with Human-in-the-Loop
 
-Create new tasks with priorities, deadlines, and tags.
+**Real-time streaming chat that understands your tasks and pauses for your confirmation before acting.**
 
-![Task Creation](Screenshots/Create-Task.png)
-
----
-
-## Task Filtering
-
-Filter tasks using title, priority, status, deadline, and tags.
-
-![Task Filtering](Screenshots/Task-Filters.png)
+<table>
+<tr>
+<td><img src="screenshots/Chat.png" alt="AI chat assistant" width="100%" /></td>
+<td><img src="screenshots/HTL.png" alt="Human-in-the-loop confirmation" width="100%" /></td>
+</tr>
+</table>
 
 ---
 
-## AI Tool Calling
+## Agent Workflow with Tool Calling
 
-The AI automatically invokes tools to perform task-related actions.
+**The agent reasons step-by-step and calls tools to create, edit, and complete tasks with priorities, deadlines, and tags.**
 
-![Tool Calling](Screenshots/Tool-Calling.png)
-
----
-
-## Human-in-the-loop Approval
-
-Interrupt the agent workflow, request user confirmation, and resume execution seamlessly.
-
-![Interrupt Workflow](Screenshots/Human-In-The-Loop.png)
+<table>
+<tr>
+<td><img src="screenshots/Workflow.png" alt="Agent workflow" width="100%" /></td>
+<td><img src="screenshots/Agent.png" alt="Agent tool calling" width="100%" /></td>
+</tr>
+</table>
 
 ---
 
-## User Authentication
+## Backend Endpoints and Authentication
 
-Secure authentication using JWT with protected routes.
+**FastAPI endpoints powering authentication, task management, and AI streaming.**
 
-![Authentication](Screenshots/Authentication.png)
-
----
-
-## Task Details
-
-Edit task information, update completion status, priorities, and deadlines.
-
-![Task Details](Screenshots/Task-Details.png)
+<table>
+<tr>
+<td><img src="screenshots/Auth.png" alt="Authentication" width="100%" /></td>
+<td><img src="screenshots/Endpoints.png" alt="API endpoints" width="100%" /></td>
+</tr>
+</table>
 
 ---
 
-## Backend API
+# Project Structure
 
-FastAPI endpoints powering authentication, task management, AI streaming, and user interactions.
+<table>
+<tr>
+<th>Frontend</th>
+<th>Backend</th>
+</tr>
+<tr>
+<td valign="top">
 
-![Backend Routes](Screenshots/Backend-Routes.png)
+```text
+frontend
+├── public
+└── src
+    ├── apis
+    │   ├── api.ts
+    │   └── chat.ts
+    ├── Components
+    │   ├── ConfirmDelete.tsx
+    │   ├── ConfirmEdit.tsx
+    │   ├── FilterCard.tsx
+    │   ├── NavBar.tsx
+    │   └── TaskForm.tsx
+    ├── Layouts
+    │   ├── ProtectedRoute.tsx
+    │   └── RootLayout.tsx
+    ├── Pages
+    │   ├── ChatPage.tsx
+    │   ├── LoginPage.tsx
+    │   ├── SignUpPage.tsx
+    │   └── TasksPage.tsx
+    ├── hooks
+    │   ├── useTasks.ts
+    │   ├── useUpdateTasks.ts
+    │   └── useUser.ts
+    ├── App.tsx
+    └── main.tsx
+```
 
----
+</td>
+<td valign="top">
 
-## LangGraph Workflow
+```text
+backend
+├── agent
+│   ├── Agent.py
+│   ├── agent_models.py
+│   └── agent_tools.py
+├── routes
+│   ├── auth_router.py
+│   ├── user_router.py
+│   └── agent_router.py
+├── services
+│   ├── auth_service.py
+│   └── user_service.py
+├── database.py
+├── models.py
+├── main.py
+└── requirements.txt
+```
 
-Agent workflow showing reasoning, tool execution, interrupts, and checkpoint persistence.
-
-![LangGraph Workflow](Screenshots/LangGraph.png)
-
----
-
-## Database Schema
-
-PostgreSQL schema used for users, tasks, and LangGraph checkpoints.
-
-![Database Schema](Screenshots/Database.png)
+</td>
+</tr>
+</table>
 
 ---
 
@@ -243,7 +240,7 @@ It can:
 - Modern responsive interface
 - TanStack Query server-state management
 - Optimistic UI updates
-- React Context for authentication
+- JWT auth state via TanStack Query
 - Streaming AI chat
 - Infinite chat updates without polling
 - Theme support
@@ -256,7 +253,7 @@ It can:
 
 - FastAPI
 - Async endpoints
-- SQLAlchemy ORM
+- MongoDB / PyMongo data layer
 - JWT Authentication
 - LangGraph Agent
 - Tool Calling
@@ -272,7 +269,7 @@ It can:
 - Building production-ready full-stack applications
 - Designing REST APIs with FastAPI
 - JWT authentication and authorization
-- SQLAlchemy ORM with PostgreSQL
+- MongoDB / PyMongo data layer
 - Server-Sent Events (SSE)
 - Streaming AI responses
 - Building agentic workflows with LangGraph
@@ -281,7 +278,7 @@ It can:
 - Conversation memory using PostgreSQL checkpoints
 - Managing server state with TanStack Query
 - Optimistic UI updates
-- React Context API
+- JWT auth state via TanStack Query
 - Deploying frontend and backend independently
 - Working with Neon PostgreSQL
 - Building scalable project architecture
@@ -308,3 +305,5 @@ It can:
 **Vedananda Pathi**
 
 GitHub: https://github.com/Vedananda-19
+
+---

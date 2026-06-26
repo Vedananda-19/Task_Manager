@@ -73,7 +73,6 @@ const useUpdateTasks = (searchParams:URLSearchParams) => {
         mutationFn:checkTask,
         onSettled: () => {
             refreshTasks();
-            toast.success("Task status updated.");
         },
         onMutate: async (newId:string) =>{//Optimistic Update
             await queryClient.cancelQueries({queryKey:["tasks"]})

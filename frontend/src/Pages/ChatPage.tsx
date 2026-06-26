@@ -235,10 +235,9 @@ export default function ChatPage() {
                     <div className="chatWelcomeCard">
                         <h2>Organize your tasks</h2>
                         <p className="chatWelcomeText">
-                            Ask in plain English. I can create, edit, complete, delete, search,
+                            I can create, edit, complete, delete, search
                             and filter your tasks for you.
                         </p>
-
                         <div className="chatExamples">
                             <button
                                 type="button"
@@ -291,6 +290,16 @@ export default function ChatPage() {
                                 }
                             >
                                 "Make all the upcoming tasks with exam tag have high priority."
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() =>
+                                    setInput(
+                                        "I'm feeling lucky—create 5 random tasks with short descriptions and deadlines."
+                                    )
+                                }
+                            >
+                                "I'm feeling lucky—create 5 random tasks with short descriptions and deadlines."
                             </button>
                         </div>
                     </div>
