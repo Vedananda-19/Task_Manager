@@ -25,8 +25,8 @@ async def lifespan(app:FastAPI):
         yield
 
     print("Checkpointer closed")
-    
-allowed_origins = ["http://localhost:5173","https://task-manager-omega-jade.vercel.app"]
+
+allowed_origins = ["http://localhost:5173","https://taskmanager.quantumnex.in/"]
 
 app = FastAPI(lifespan=lifespan)
 app.add_middleware(CORSMiddleware,allow_origins=allowed_origins,allow_headers=['*'],allow_methods=['*'],allow_credentials=['*'])
