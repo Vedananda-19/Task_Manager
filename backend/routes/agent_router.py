@@ -67,7 +67,7 @@ async def get_streamed_messages(request:Request, chat_request:ChatRequest,resume
                                         "token": text,
                                     })
                                     yield f"data: {payload}\n\n"
-                    for tool in chunk.tool_calls:
+                    for tool in getattr(chunk, "tool_calls", []):
                         payload = json.dumps({
                             "type":"tool_start",
                             "name":tool["name"],

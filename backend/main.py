@@ -14,10 +14,18 @@ load_dotenv()
 @asynccontextmanager
 async def lifespan(app:FastAPI):
     async with AsyncPostgresSaver.from_conn_string(os.getenv("POSTGRES_DB_URI")) as checkpointer:
+        print("Connected!")
+
         await checkpointer.setup()
-        app.state.agent = Agent(checkpointer=checkpointer)
+
+        print("Setup finished!")
+
+        app.state.agent = Agent(checkpointer)
+
         yield
 
+    print("Checkpointer closed")
+    
 allowed_origins = ["http://localhost:5173","https://task-manager-omega-jade.vercel.app"]
 
 app = FastAPI(lifespan=lifespan)

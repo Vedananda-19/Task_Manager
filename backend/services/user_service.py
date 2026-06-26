@@ -101,5 +101,5 @@ def check_task(task_id:str,user:CurrentUser,action:str = None):
         result = tasks.update_one({"user_id":user.id,"_id":task_id},[{"$set":{"completed":True if action=="check" else False}}])
         if result.matched_count==0:
             return {"error":"Task Not Found"}
-        return {"message":f"Task {"Checked" if action=="check" else "Unchecked"} Successfully"}
+        return {"message": f"Task {'Checked' if action == 'check' else 'Unchecked'} Successfully"}
 

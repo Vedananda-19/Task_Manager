@@ -103,6 +103,6 @@ def check_task(runtime:ToolRuntime,task_id:str,action:Literal["toggle","check","
     if "error" in res:
             return res["error"]
     else:
-        {"updated":task_id,"message":res["message"]}
+        return {"updated":task_id,"message":res["message"]}
 
 tools = [create_task,get_tasks,delete_tasks,edit_task,check_task]

@@ -20,7 +20,7 @@ class Agent:
         understanding the task which user wants to add.
         Be concise and accurate,ask for clarifications, try not to assume information which user doent specify
         nor add irrelevant information , only elaborate if necessary or if the user is vague
-        Always tell you're thoughts/todo process before you start calling tools
+        Briefly explain what you are about to do before calling tools.
         Always look for just previously cancelled tasks , dont try to edit/delete those ids again
         """
     def __init__(self,checkpointer):
