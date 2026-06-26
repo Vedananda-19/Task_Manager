@@ -9,6 +9,8 @@ from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
 from agent.Agent import Agent
 import os
 
+load_dotenv()
+
 @asynccontextmanager
 async def lifespan(app:FastAPI):
     async with AsyncPostgresSaver.from_conn_string(os.getenv("POSTGRES_DB_URI")) as checkpointer:
@@ -16,7 +18,6 @@ async def lifespan(app:FastAPI):
         app.state.agent = Agent(checkpointer=checkpointer)
         yield
 
-load_dotenv()
 allowed_origins = ["http://localhost:5173"]
 
 app = FastAPI(lifespan=lifespan)
