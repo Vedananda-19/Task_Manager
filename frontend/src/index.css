@@ -234,6 +234,42 @@ body {
 button, input, textarea { font: inherit; }
 button { cursor: pointer; }
 
+input,
+textarea,
+select {
+    color: var(--color-text-primary);
+    background: var(--color-surface);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--color-text-secondary);
+}
+
+button{
+  color: var(--color-text-primary);
+}
+
+
+.taskFormPanel input,
+.taskFormPanel textarea {
+    border: 1px solid var(--color-border-soft);
+    background: var(--color-surface);
+    color: var(--color-text-primary);
+}
+
+.filterGrid input,
+.filterGrid select,
+.filterTagInput input {
+    background: var(--color-surface);
+    color: var(--color-text-primary);
+}
+
+.sortControl select {
+    background: var(--color-surface);
+    color: var(--color-text-primary);
+}
+
 /* ============================================================
    NAV
    ============================================================ */
@@ -1326,7 +1362,3 @@ button { cursor: pointer; }
 /* Pull replies following tool calls closer */
 .message-row.tool_start + .message-row.assistant,
 .message-row.tool_end + .message-row.assistant { margin-top: -8px; }
-
-.taskActions :first-child{
-  color: #64748b;
-}
