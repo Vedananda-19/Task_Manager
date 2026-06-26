@@ -18,7 +18,7 @@ async def lifespan(app:FastAPI):
         app.state.agent = Agent(checkpointer=checkpointer)
         yield
 
-allowed_origins = ["http://localhost:5173"]
+allowed_origins = ["http://localhost:5173","https://task-manager-omega-jade.vercel.app"]
 
 app = FastAPI(lifespan=lifespan)
 app.add_middleware(CORSMiddleware,allow_origins=allowed_origins,allow_headers=['*'],allow_methods=['*'],allow_credentials=['*'])
