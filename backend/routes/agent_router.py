@@ -19,9 +19,9 @@ class ChatRequest(BaseModel):
 agent_router = APIRouter(prefix="/agent",tags=["agent"])
 
 @agent_router.post("/stream-messages")
-async def stream_messages(chat_request:ChatRequest,user:CurrentUser = Depends(get_current_user)):
+async def stream_messages(request: Request,chat_request:ChatRequest,user:CurrentUser = Depends(get_current_user)):
     return StreamingResponse( #For async generating server sent events(sse)
-         get_streamed_messages(chat_request,chat_request.mode == "resume",user),
+         get_streamed_messages(request,chat_request,chat_request.mode == "resume",user),
          media_type="text/event-stream",
          headers={
             "Cache-Control": "no-cache",
@@ -95,6 +95,7 @@ async def get_streamed_messages(request:Request, chat_request:ChatRequest,resume
     except Exception as error:
          print("STREAM ERROR:", repr(error))
          traceback.print_exc()
+         error = str(error)
          if "503" in error and "high demand" in error.lower():
             message = (
                 """The AI model is currently experiencing high demand.Please Try again later """

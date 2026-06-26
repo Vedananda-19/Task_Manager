@@ -71,11 +71,31 @@ const useUpdateTasks = () => {
 
     const checkMutation = useMutation({
         mutationFn:checkTask,
-        onSuccess: () => {
+        onSettled: () => {
             refreshTasks();
             toast.success("Task status updated.");
         },
-        onError: mutationError,
+        onMutate: async (newId:string) =>{
+            await queryClient.cancelQueries({queryKey:["tasks"]})
+            const previous = queryClient.getQueryData(["tasks"])
+            queryClient.setQueryData(
+                ["tasks"],
+                (prev: { tasks: Task[]; page_data: any } | undefined) =>
+                    prev ? {
+                            ...prev,
+                            tasks: prev.tasks.map((task) =>
+                                task.id === newId
+                                    ? { ...task, completed: !task.completed }
+                                    : task
+                            ),
+                        }: prev
+                )
+            return {previous}
+        },
+        onError: (_,__,context) => {
+            queryClient.setQueryData(["tasks"], context?.previous)
+            mutationError()
+        }
     })
 
     return {createMutation,updateMutation,deleteMutation,checkMutation}

@@ -2,10 +2,19 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { queryClient } from "../main";
 import useUser from "../hooks/useUser";
 import { toast } from "react-toastify";
+import { useState, useEffect } from "react";
 
 const NavBar = () => {
     const navigate = useNavigate();
     const {data:user} = useUser()
+    const [darkMode, setDarkMode] = useState(() =>
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+    );
+
+    useEffect(() => {
+        localStorage.setItem("theme", darkMode ? "dark" : "light");
+        document.documentElement.classList.toggle("dark", darkMode);
+    }, [darkMode]);
 
     const logout = () => {
         const confirmed = window.confirm("Are you sure you want to log out?");
@@ -17,7 +26,7 @@ const NavBar = () => {
     };
 
     return (
-        <nav className="navBar" aria-label="Main navigation">
+        <nav className="navBar">
             <div className="navContent">
                 <NavLink className="navBrand" to="/">Task Manager</NavLink>
                 <div className="navLinks">
@@ -31,6 +40,13 @@ const NavBar = () => {
                         <NavLink className={({ isActive }) => `navLink${isActive ? " active" : ""}`} to="/login" replace>Login</NavLink>
                     )}
                 </div>
+                <button
+                        className="navLink"
+                        type="button"
+                        onClick={() => setDarkMode((prev) => !prev)}
+                    >
+                        {darkMode ? "light" : "dark"}
+                    </button>
             </div>
         </nav>
     );
