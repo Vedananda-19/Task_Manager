@@ -78,7 +78,9 @@ def edit_task(runtime:ToolRuntime,
                                ,priority=int(priority) if priority is not None else None,tags=tags)
     user = get_context_user(runtime.context)
     old_task = user_service.get_task_by_id(task_id,user)
-    
+    if old_task is None:
+        return {"error":f"Task not found for id:{task_id}, dont try to edit this id again"}
+
     response = interrupt({"action":"confirm_edit","data":{"task_id":task_id,"new_data":new_data.model_dump(mode="json")}})
     if response["approval"]=="approved":
         res = user_service.update_task_with_new_data(old_task,new_data,replace_tags,user)

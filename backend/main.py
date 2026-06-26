@@ -14,31 +14,24 @@ load_dotenv()
 
 @asynccontextmanager
 async def lifespan(app:FastAPI):
+    #Since Neon was closing the dconnection on 5mins idle , causing errors
     async with AsyncConnectionPool(
         conninfo=os.getenv("POSTGRES_DB_URI"),
-        min_size=0,                 # don't hold idle conns Neon will kill
-        max_size=10,
-        max_idle=240,               # recycle conns after 4 min (< Neon's 5 min idle)
+        min_size=0,max_size=10,max_idle=240,
         check=AsyncConnectionPool.check_connection,  # ping & drop dead conns before use
         kwargs={"autocommit": True, "prepare_threshold": 0},
     ) as pool:
-        print("Connected!")
-
         checkpointer = AsyncPostgresSaver(pool)
         await checkpointer.setup()
-
-        print("Setup finished!")
-
         app.state.agent = Agent(checkpointer)
 
         yield
-
     print("Checkpointer closed")
 
 allowed_origins = ["http://localhost:5173","https://taskmanager.quantumnex.in"]
 
 app = FastAPI(lifespan=lifespan)
-app.add_middleware(CORSMiddleware,allow_origins=allowed_origins,allow_headers=['*'],allow_methods=['*'],allow_credentials=['*'])
+app.add_middleware(CORSMiddleware,allow_origins=allowed_origins,allow_headers=['*'],allow_methods=['*'],allow_credentials=True)
 app.include_router(auth_router)
 app.include_router(user_router)
 app.include_router(agent_router)

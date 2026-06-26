@@ -1,4 +1,5 @@
 from fastapi import APIRouter,Depends,Query
+from typing import Literal
 from services.auth_service import get_current_user
 from models import TaskCreateModel,CurrentUser,TaskModel
 from agent.agent_models import FilterModel
@@ -19,11 +20,11 @@ def get_user_tasks(
     page: int | None = None,
     limit: int = 20,
     title: str | None = None,
-    priority: str | None = None,
+    priority: Literal["0","1","2","3","4"] | None = None,
     tags: list[str] | None = Query(None),
     match_tags: bool = False,
-    deadline: str | None = None,
-    status: str | None = None,
+    deadline: Literal["today","upcoming","overdue","no_deadline"] | None = None,
+    status: Literal["completed","incomplete"] | None = None,
     sort: str | None = None,
     user:CurrentUser = Depends(get_current_user)
 ):
