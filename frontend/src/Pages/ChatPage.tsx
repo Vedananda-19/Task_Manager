@@ -248,7 +248,7 @@ export default function ChatPage() {
                                     )
                                 }
                             >
-                                "Create a high priority task to finish my DBMS assignment by Friday."
+                                "Create a high priority task to finish my Project assignment by Friday."
                             </button>
 
                             <button
@@ -259,7 +259,7 @@ export default function ChatPage() {
                                     )
                                 }
                             >
-                                "Show me all incomplete tasks due this week."
+                                "Show me all incomplete tasks due today."
                             </button>
 
                             <button
@@ -275,22 +275,22 @@ export default function ChatPage() {
                                 type="button"
                                 onClick={() =>
                                     setInput(
-                                        "Change the deadline of my React project to next Monday."
+                                        "Delete every completed task older than a month."
                                     )
                                 }
                             >
-                                "Change the deadline of my React project to next Monday."
+                                "Delete every completed task older than a month."
                             </button>
 
                             <button
                                 type="button"
                                 onClick={() =>
                                     setInput(
-                                        "Delete every completed task older than a month."
+                                        "Make all the upcoming tasks with exam tag have high priority"
                                     )
                                 }
                             >
-                                "Delete every completed task older than a month."
+                                "Make all the upcoming tasks with exam tag have high priority."
                             </button>
                         </div>
                     </div>
