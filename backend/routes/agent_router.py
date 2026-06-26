@@ -1,4 +1,4 @@
-from fastapi import APIRouter,Depends
+from fastapi import APIRouter,Depends,Request
 from fastapi.responses import StreamingResponse
 from services.auth_service import get_current_user
 from pydantic import BaseModel
@@ -19,7 +19,7 @@ class ChatRequest(BaseModel):
 agent_router = APIRouter(prefix="/agent",tags=["agent"])
 
 @agent_router.post("/stream-messages")
-async def stream_messages(request:Request , chat_request:ChatRequest,user:CurrentUser = Depends(get_current_user)):
+async def stream_messages(chat_request:ChatRequest,user:CurrentUser = Depends(get_current_user)):
     return StreamingResponse( #For async generating server sent events(sse)
          get_streamed_messages(chat_request,chat_request.mode == "resume",user),
          media_type="text/event-stream",
@@ -29,7 +29,8 @@ async def stream_messages(request:Request , chat_request:ChatRequest,user:Curren
          }
     )
 
-async def get_streamed_messages(chat_request:ChatRequest,resume:bool,user:CurrentUser):
+async def get_streamed_messages(request:Request, chat_request:ChatRequest,resume:bool,user:CurrentUser):
+    agent = request.app.state.agent
     context = Context(user_id=user.id,username=user.username)
     if resume:
         stream_input = Command(resume=chat_request.data)
