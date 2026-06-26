@@ -36,7 +36,7 @@ const TasksPage = () => {
     }, [searchParams, setSearchParams]);
 
     const { createMutation, updateMutation, deleteMutation, checkMutation } =
-        useUpdateTasks();
+        useUpdateTasks(searchParams);
     const { data, isLoading, error, isFetching } = useTasks(searchParams);
     const tasks = data ? data.tasks : [];
     const totalPages = data ? data.page_data.total_pages : 1;

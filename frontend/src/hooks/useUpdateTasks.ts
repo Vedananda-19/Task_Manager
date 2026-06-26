@@ -16,7 +16,7 @@ type Task = {
 type TaskInput = Omit<Task, "id" | "timestamp"> & { id?: string };
 
 
-const useUpdateTasks = () => {
+const useUpdateTasks = (searchParams:URLSearchParams) => {
     const queryClient = useQueryClient()
 
     const editTask = async (task: Task) =>{
@@ -75,11 +75,11 @@ const useUpdateTasks = () => {
             refreshTasks();
             toast.success("Task status updated.");
         },
-        onMutate: async (newId:string) =>{
+        onMutate: async (newId:string) =>{//Optimistic Update
             await queryClient.cancelQueries({queryKey:["tasks"]})
-            const previous = queryClient.getQueryData(["tasks"])
+            const previous = queryClient.getQueryData(["tasks",searchParams.toString()])
             queryClient.setQueryData(
-                ["tasks"],
+                ["tasks",searchParams.toString()],
                 (prev: { tasks: Task[]; page_data: any } | undefined) =>
                     prev ? {
                             ...prev,
@@ -93,7 +93,7 @@ const useUpdateTasks = () => {
             return {previous}
         },
         onError: (_,__,context) => {
-            queryClient.setQueryData(["tasks"], context?.previous)
+            queryClient.setQueryData(["tasks",searchParams.toString()], context?.previous)
             mutationError()
         }
     })

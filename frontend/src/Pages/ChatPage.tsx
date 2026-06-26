@@ -93,7 +93,7 @@ export default function ChatPage() {
                                 : [],
                         ),
                         {
-                            id: curr_ai_msg_id,
+                            id: crypto.randomUUID(),
                             role: "assistant",
                             content: token,
                             isStreaming: true,
@@ -244,7 +244,7 @@ export default function ChatPage() {
                                 type="button"
                                 onClick={() =>
                                     setInput(
-                                        "Create a high priority task to finish my DBMS assignment by Friday."
+                                        "Create a high priority task to finish my Project assignment by Friday."
                                     )
                                 }
                             >
@@ -255,7 +255,7 @@ export default function ChatPage() {
                                 type="button"
                                 onClick={() =>
                                     setInput(
-                                        "Show me all incomplete tasks due this week."
+                                        "Show me all incomplete tasks due today."
                                     )
                                 }
                             >
