@@ -213,6 +213,7 @@ const TasksPage = () => {
 
                         <div className="taskActions">
                             <button
+                                className="editBtn"
                                 onClick={() => {
                                     setShowForm(false);
                                     setEditingTask(task);
