@@ -87,8 +87,8 @@ Backend API: [Backend Docs](https://task-manager-91f7.onrender.com/docs)
 
 <table>
 <tr>
-<td><img src="screenshots/Dashboard.png" alt="Tasks dashboard" width="100%" /></td>
-<td><img src="screenshots/Creating.png" alt="Creating tasks" width="100%" /></td>
+<td><img src="screenshots/Dashboard.png" alt="Tasks dashboard" width="700" /></td>
+<td><img src="screenshots/Creating.png" alt="Creating tasks" width="700" /></td>
 </tr>
 </table>
 
@@ -100,8 +100,8 @@ Backend API: [Backend Docs](https://task-manager-91f7.onrender.com/docs)
 
 <table>
 <tr>
-<td><img src="screenshots/Chat.png" alt="AI chat assistant" width="100%" /></td>
-<td><img src="screenshots/HTL.png" alt="Human-in-the-loop confirmation" width="100%" /></td>
+<td><img src="screenshots/Chat.png" alt="AI chat assistant" width="700" /></td>
+<td><img src="screenshots/HTL.png" alt="Human-in-the-loop confirmation" width="700" /></td>
 </tr>
 </table>
 
@@ -113,8 +113,8 @@ Backend API: [Backend Docs](https://task-manager-91f7.onrender.com/docs)
 
 <table>
 <tr>
-<td><img src="screenshots/Workflow.png" alt="Agent workflow" width="100%" /></td>
-<td><img src="screenshots/Agent.png" alt="Agent tool calling" width="100%" /></td>
+<td><img src="screenshots/Workflow.png" alt="Agent workflow" width="700" /></td>
+<td><img src="screenshots/Agent.png" alt="Agent tool calling" width="700" /></td>
 </tr>
 </table>
 
@@ -126,8 +126,8 @@ Backend API: [Backend Docs](https://task-manager-91f7.onrender.com/docs)
 
 <table>
 <tr>
-<td><img src="screenshots/Auth.png" alt="Authentication" width="100%" /></td>
-<td><img src="screenshots/Endpoints.png" alt="API endpoints" width="100%" /></td>
+<td><img src="screenshots/Auth.png" alt="Authentication" width="700" /></td>
+<td><img src="screenshots/Endpoints.png" alt="API endpoints" width="700" /></td>
 </tr>
 </table>
 
