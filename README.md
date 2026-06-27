@@ -7,10 +7,10 @@ A full-stack AI-powered task management application that helps users organize ta
 - Secure Registration and login with JWT
 - Create, edit, delete, and complete tasks
 - Filtering, Sorting, Pagination features
-- Smart AI assistant for task management
+- Smart AI-Assistant for task organizing
 - Streamed AI responses
-- Human-in-the-loop workflow- confirmation
-- Persistent memory - LangGraph checkpoints
+- Human-in-the-loop workflow
+- Persistent memory-LangGraph checkpoints
 - Tool calling for task-related actions
 - Responsive and modern user interface
 - Dark and light mode support
