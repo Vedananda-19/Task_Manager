@@ -8,13 +8,12 @@ A full-stack AI-powered task management application that helps users organize ta
 - Create, edit, delete, and complete tasks
 - Filtering, Sorting, Pagination features
 - Smart AI assistant for task management
-- Streaming AI responses for real-time conversations
+- Streamed AI responses
 - Human-in-the-loop workflow- confirmation
 - Persistent memory - LangGraph checkpoints
 - Tool calling for task-related actions
 - Responsive and modern user interface
 - Dark and light mode support
-- Optimistic UI updates
 - Persistent MongoDB database storage
 
 ---
@@ -25,8 +24,7 @@ A full-stack AI-powered task management application that helps users organize ta
 
 - React
 - TypeScript
-- TanStack Query
-- React Router
+- React Query
 
 <sub>_Note: some of the JSX and Styling was assisted by AI._</sub>
 
@@ -37,11 +35,9 @@ A full-stack AI-powered task management application that helps users organize ta
 - FastAPI
 - LangGraph & LangChain
 - Google Gemini
-- MongoDB
-- PyMongo
+- MongoDB & PyMongo
 - PostgreSQL (LangGraph Checkpointer)
-- Server-Sent Events (Streaming Responses)
-- AsyncIO
+- Server-Sent Events 
 
 ---
 
@@ -70,7 +66,7 @@ A full-stack AI-powered task management application that helps users organize ta
 - Frontend - Vercel
 - Backend - Render
 - MongoDB - Atlas
-- PostgreSQL - Neon (LangGraph Checkpointer)
+- PostgreSQL - Neon
 
 ---
 
