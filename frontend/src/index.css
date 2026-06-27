@@ -505,8 +505,10 @@ button{
 
 .completeButton {
   min-width: 1.35rem;
+  width: 1.35rem;
   height: 1.35rem;
   flex-shrink: 0;
+  align-self: flex-start;
   margin-top: .2rem;
   border: 2px solid var(--color-complete-border);
   border-radius: 50%;

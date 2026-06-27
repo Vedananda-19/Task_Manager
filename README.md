@@ -4,18 +4,17 @@ A full-stack AI-powered task management application that helps users organize ta
 
 ## Features
 
-- Secure user registration and login with JWT authentication
+- Secure Registration and login with JWT
 - Create, edit, delete, and complete tasks
-- Filter tasks by title, status, priority, tags, and deadline
-- Pagination for efficient task browsing
-- Intelligent AI assistant for task management
+- Filtering, Sorting, Pagination features
+- Smart AI assistant for task management
 - Streaming AI responses for real-time conversations
-- Human-in-the-loop workflows for user confirmation
-- Persistent conversation memory using LangGraph checkpoints
+- Human-in-the-loop workflow- confirmation
+- Persistent memory - LangGraph checkpoints
 - Tool calling for task-related actions
 - Responsive and modern user interface
 - Dark and light mode support
-- Optimistic UI updates for smooth interactions
+- Optimistic UI updates
 - Persistent MongoDB database storage
 
 ---
